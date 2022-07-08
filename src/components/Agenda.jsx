@@ -13,10 +13,6 @@ const Agenda = () => {
       .then(contacts => setContacts(contacts.data));
   };
 
-  const wipeContacts = () => {
-    contactsService.deleteAllContactsForOwner(userId).then(() => getContacts());
-  };
-
   useEffect(() => {
     getContacts();
   }, []);
@@ -24,10 +20,12 @@ const Agenda = () => {
   return (
     <div>
       <h1>Contact Agenda</h1>
-      <ContactsList contacts={contacts} getContacts={getContacts} />
       <AddContact userId={userId} getContacts={getContacts} />
-      <hr />
-      <button onClick={() => wipeContacts()}>Delete all</button>
+      <ContactsList
+        contacts={contacts}
+        getContacts={getContacts}
+        userId={userId}
+      />
     </div>
   );
 };

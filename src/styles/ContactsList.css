@@ -1,0 +1,8 @@
+.grid-layout {
+  display: flex !important;
+  flex-wrap: wrap !important;
+}
+
+.grid-layout > #item {
+  flex: 0 1 100% !important;
+}

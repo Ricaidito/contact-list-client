@@ -1,9 +1,10 @@
-import "./App.css";
+import "./styles/App.css";
 import Agenda from "./components/Agenda";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 const App = () => {
   return (
-    <div>
+    <div className="container">
       <Agenda />
     </div>
   );
