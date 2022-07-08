@@ -1,7 +1,12 @@
 import "./App.css";
+import Agenda from "./components/Agenda";
 
 const App = () => {
-  return <div>Hello world from App component!</div>;
+  return (
+    <div>
+      <Agenda />
+    </div>
+  );
 };
 
 export default App;
