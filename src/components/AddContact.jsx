@@ -31,8 +31,8 @@ const AddContact = ({ userId, getContacts }) => {
   };
 
   return (
-    <div className="m-2" style={{ width: "25%" }}>
-      <h2>Add a contact</h2>
+    <div className="m-2 col" style={{ width: "25%" }}>
+      <h2>Add Contact</h2>
       <Form onSubmit={addContact}>
         <Form.Group className="mb-3">
           <Form.Label>First Name</Form.Label>

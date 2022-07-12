@@ -1,21 +1,13 @@
 import contactsService from "../services/contacts-service";
 import { Card, ListGroup, Button, Alert } from "react-bootstrap";
-import UpdateContact from "./UpdateContact";
 import "../styles/ContactsList.css";
-import { useState } from "react";
 
 const ContactsList = ({ contacts, getContacts, userId }) => {
-  const [show, setShow] = useState(false);
-
-  let selectedContact = "";
-
-  const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
   const getContactList = contacts.length ? (
     contacts.map((c, index) => (
       <Card
         key={c._id}
-        style={{ width: "18rem" }}
+        style={{ width: "19rem" }}
         className="m-2 col-xs-1"
         id="item"
       >
@@ -25,6 +17,9 @@ const ContactsList = ({ contacts, getContacts, userId }) => {
           </Card.Title>
           <ListGroup>
             <ListGroup.Item>
+              <strong>Contact ID: </strong> {c._id}
+            </ListGroup.Item>
+            <ListGroup.Item>
               <strong>Phone Number: </strong>
               {c.phoneNumber}
             </ListGroup.Item>
@@ -33,12 +28,6 @@ const ContactsList = ({ contacts, getContacts, userId }) => {
             </ListGroup.Item>
           </ListGroup>
           <div className="d-flex justify-content-evenly mt-2">
-            <Button
-              variant="outline-warning"
-              onClick={() => updateContact(c._id)}
-            >
-              Update
-            </Button>
             <Button
               variant="outline-danger"
               onClick={() => deleteContact(c._id)}
@@ -66,11 +55,6 @@ const ContactsList = ({ contacts, getContacts, userId }) => {
     contactsService.deleteAllContactsForOwner(userId).then(() => getContacts());
   };
 
-  const updateContact = id => {
-    selectedContact = id;
-    handleShow();
-  };
-
   return (
     <div>
       <h2>List of contacts</h2>
@@ -78,12 +62,6 @@ const ContactsList = ({ contacts, getContacts, userId }) => {
       <Button variant="outline-danger" onClick={() => wipeContacts()}>
         Delete All
       </Button>
-
-      <UpdateContact
-        show={show}
-        handleClose={handleClose}
-        contactId={selectedContact}
-      />
     </div>
   );
 };

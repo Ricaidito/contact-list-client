@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import ContactsList from "../components/ContactsList";
 import AddContact from "../components/AddContact";
 import contactsService from "../services/contacts-service";
+import UpdateContact from "./UpdateContact";
 
 const Agenda = () => {
   const userId = "62c76a40ffcacc1914a8cbbb";
@@ -20,7 +21,11 @@ const Agenda = () => {
   return (
     <div>
       <h1>Contact Agenda</h1>
-      <AddContact userId={userId} getContacts={getContacts} />
+      <div className="row">
+        <AddContact userId={userId} getContacts={getContacts} />
+        <UpdateContact userId={userId} getContacts={getContacts} />
+      </div>
+
       <ContactsList
         contacts={contacts}
         getContacts={getContacts}
