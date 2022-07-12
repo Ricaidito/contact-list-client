@@ -1,11 +1,10 @@
 import "./styles/App.css";
-import Agenda from "./components/Agenda";
-import "bootstrap/dist/css/bootstrap.min.css";
+import Login from "./components/Login";
 
 const App = () => {
   return (
     <div className="container app">
-      <Agenda />
+      <Login />
     </div>
   );
 };

@@ -1,26 +1,26 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useCallback } from "react";
 import ContactsList from "../components/ContactsList";
 import AddContact from "../components/AddContact";
 import contactsService from "../services/contacts-service";
 import UpdateContact from "./UpdateContact";
 
-const Agenda = () => {
-  const userId = "62c76a40ffcacc1914a8cbbb";
+const Agenda = ({ userId, logOut }) => {
   const [contacts, setContacts] = useState([]);
 
-  const getContacts = () => {
+  const getContacts = useCallback(() => {
     contactsService
       .getContactsForUser(userId)
       .then(contacts => setContacts(contacts.data));
-  };
+  }, [userId]);
 
   useEffect(() => {
     getContacts();
-  }, []);
+  }, [getContacts]);
 
   return (
     <div className="m-2">
       <h1 className="text-center">Contact Agenda</h1>
+      <button onClick={() => logOut()}>logout</button>
       <hr />
       <div className="row">
         <AddContact userId={userId} getContacts={getContacts} />
