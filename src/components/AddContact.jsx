@@ -14,8 +14,7 @@ const AddContact = ({ userId, getContacts }) => {
   const addContact = e => {
     e.preventDefault();
     clearFields();
-    contactsService.addAContact(newContact).then(contact => {
-      console.log(contact.data);
+    contactsService.addAContact(newContact).then(() => {
       getContacts();
     });
   };
@@ -32,14 +31,14 @@ const AddContact = ({ userId, getContacts }) => {
 
   return (
     <div className="m-2 col" style={{ width: "25%" }}>
-      <h2>Add Contact</h2>
+      <h2>Add contact</h2>
       <Form onSubmit={addContact}>
         <Form.Group className="mb-3">
-          <Form.Label>First Name</Form.Label>
+          <Form.Label>First name:</Form.Label>
           <Form.Control
             type="text"
             required
-            placeholder="Enter First Name"
+            placeholder="First name..."
             onChange={e =>
               setNewContact({ ...newContact, firstName: e.target.value })
             }
@@ -48,11 +47,11 @@ const AddContact = ({ userId, getContacts }) => {
         </Form.Group>
 
         <Form.Group className="mb-3">
-          <Form.Label>Last Name</Form.Label>
+          <Form.Label>Last name:</Form.Label>
           <Form.Control
             type="text"
             required
-            placeholder="Enter Last Name"
+            placeholder="Last name..."
             onChange={e =>
               setNewContact({ ...newContact, lastName: e.target.value })
             }
@@ -61,11 +60,11 @@ const AddContact = ({ userId, getContacts }) => {
         </Form.Group>
 
         <Form.Group className="mb-3">
-          <Form.Label>Email address</Form.Label>
+          <Form.Label>Email address:</Form.Label>
           <Form.Control
             type="email"
             required
-            placeholder="Enter email"
+            placeholder="Email..."
             onChange={e =>
               setNewContact({ ...newContact, email: e.target.value })
             }
@@ -74,18 +73,18 @@ const AddContact = ({ userId, getContacts }) => {
         </Form.Group>
 
         <Form.Group className="mb-3">
-          <Form.Label>Phone Number</Form.Label>
+          <Form.Label>Phone number:</Form.Label>
           <Form.Control
             type="tel"
             required
-            placeholder="Enter Phone Number"
+            placeholder="Phone..."
             onChange={e =>
               setNewContact({ ...newContact, phoneNumber: e.target.value })
             }
             value={newContact.phoneNumber}
           />
         </Form.Group>
-        <Button variant="outline-success" type="submit">
+        <Button variant="success" type="submit">
           Add
         </Button>
       </Form>

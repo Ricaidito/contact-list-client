@@ -17,8 +17,7 @@ const UpdateContact = ({ userId, getContacts }) => {
     clearFields();
     contactsService
       .updateContactById(contactToModify._id, contactToModify)
-      .then(contact => {
-        console.log(contact.data);
+      .then(() => {
         getContacts();
       });
   };
@@ -35,14 +34,14 @@ const UpdateContact = ({ userId, getContacts }) => {
   };
   return (
     <div className="m-2 col" style={{ width: "25%" }}>
-      <h2>Update Contact</h2>
+      <h2>Update contact</h2>
       <Form onSubmit={modifyContact}>
         <Form.Group className="mb-3">
           <Form.Label>Contact ID:</Form.Label>
           <Form.Control
             type="text"
             required
-            placeholder="Enter Contact ID"
+            placeholder="Contact ID..."
             onChange={e =>
               setContact({ ...contactToModify, _id: e.target.value })
             }
@@ -50,11 +49,11 @@ const UpdateContact = ({ userId, getContacts }) => {
           />
         </Form.Group>
         <Form.Group className="mb-3">
-          <Form.Label>First Name</Form.Label>
+          <Form.Label>First name:</Form.Label>
           <Form.Control
             type="text"
             required
-            placeholder="Enter First Name"
+            placeholder="First name..."
             onChange={e =>
               setContact({ ...contactToModify, firstName: e.target.value })
             }
@@ -63,11 +62,11 @@ const UpdateContact = ({ userId, getContacts }) => {
         </Form.Group>
 
         <Form.Group className="mb-3">
-          <Form.Label>Last Name</Form.Label>
+          <Form.Label>Last name:</Form.Label>
           <Form.Control
             type="text"
             required
-            placeholder="Enter Last Name"
+            placeholder="Last name..."
             onChange={e =>
               setContact({ ...contactToModify, lastName: e.target.value })
             }
@@ -76,11 +75,11 @@ const UpdateContact = ({ userId, getContacts }) => {
         </Form.Group>
 
         <Form.Group className="mb-3">
-          <Form.Label>Email address</Form.Label>
+          <Form.Label>Email address:</Form.Label>
           <Form.Control
             type="email"
             required
-            placeholder="Enter email"
+            placeholder="Email..."
             onChange={e =>
               setContact({ ...contactToModify, email: e.target.value })
             }
@@ -89,18 +88,18 @@ const UpdateContact = ({ userId, getContacts }) => {
         </Form.Group>
 
         <Form.Group className="mb-3">
-          <Form.Label>Phone Number</Form.Label>
+          <Form.Label>Phone number:</Form.Label>
           <Form.Control
             type="tel"
             required
-            placeholder="Enter Phone Number"
+            placeholder="Phone..."
             onChange={e =>
               setContact({ ...contactToModify, phoneNumber: e.target.value })
             }
             value={contactToModify.phoneNumber}
           />
         </Form.Group>
-        <Button variant="outline-warning" type="submit">
+        <Button variant="warning" type="submit">
           Update
         </Button>
       </Form>

@@ -9,13 +9,13 @@ const ContactsList = ({ contacts, getContacts, userId }) => {
         key={c._id}
         style={{ width: "19rem" }}
         className="m-2 col-xs-1"
-        id="item"
+        id="contact"
       >
         <Card.Body>
           <Card.Title className="text-center fw-bold">
             {index + 1}. {c.firstName} {c.lastName}
           </Card.Title>
-          <ListGroup>
+          <ListGroup id="card-fields">
             <ListGroup.Item>
               <strong>Contact ID: </strong> {c._id}
             </ListGroup.Item>
@@ -28,10 +28,7 @@ const ContactsList = ({ contacts, getContacts, userId }) => {
             </ListGroup.Item>
           </ListGroup>
           <div className="d-flex justify-content-evenly mt-2">
-            <Button
-              variant="outline-danger"
-              onClick={() => deleteContact(c._id)}
-            >
+            <Button variant="danger" onClick={() => deleteContact(c._id)}>
               Delete
             </Button>
           </div>
@@ -45,8 +42,7 @@ const ContactsList = ({ contacts, getContacts, userId }) => {
   );
 
   const deleteContact = id => {
-    contactsService.deleteContactById(id).then(res => {
-      console.log(res);
+    contactsService.deleteContactById(id).then(() => {
       getContacts();
     });
   };
@@ -59,7 +55,7 @@ const ContactsList = ({ contacts, getContacts, userId }) => {
     <div>
       <h2>List of contacts</h2>
       <div className="row">{getContactList}</div>
-      <Button variant="outline-danger" onClick={() => wipeContacts()}>
+      <Button variant="danger m-3" onClick={() => wipeContacts()}>
         Delete All
       </Button>
     </div>

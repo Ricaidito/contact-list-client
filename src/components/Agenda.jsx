@@ -19,13 +19,13 @@ const Agenda = () => {
   }, []);
 
   return (
-    <div>
-      <h1>Contact Agenda</h1>
+    <div className="m-2">
+      <h1 className="text-center">Contact Agenda</h1>
+      <hr />
       <div className="row">
         <AddContact userId={userId} getContacts={getContacts} />
         <UpdateContact userId={userId} getContacts={getContacts} />
       </div>
-
       <ContactsList
         contacts={contacts}
         getContacts={getContacts}

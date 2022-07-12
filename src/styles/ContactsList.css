@@ -1,8 +1,12 @@
-.grid-layout {
-  display: flex !important;
-  flex-wrap: wrap !important;
+/* https://colorhunt.co/palette/94b49fcee5d0fcf8e8ecb390 */
+
+#contact {
+  border: 0.5px solid gray;
+  border-radius: 5px;
+  box-shadow: 5px 5px;
+  background-color: #ecb390;
 }
 
-.grid-layout > #item {
-  flex: 0 1 100% !important;
+#card-fields > * {
+  background-color: #fcf8e8;
 }
