@@ -1,5 +1,5 @@
 import contactsService from "../services/contacts-service";
-import { Card, ListGroup, Button, Alert } from "react-bootstrap";
+import { Card, ListGroup, Button, Alert, Form } from "react-bootstrap";
 import "../styles/ContactsList.css";
 
 const ContactsList = ({ contacts, getContacts, userId }) => {
@@ -26,6 +26,13 @@ const ContactsList = ({ contacts, getContacts, userId }) => {
             <ListGroup.Item>
               <strong>Email Address: </strong> {c.email}
             </ListGroup.Item>
+            <ListGroup.Item>
+              <strong>Message:</strong>
+              <Form.Control type="text" required className="mb-1" />
+              <Button variant="success" onClick={() => sendAlert()}>
+                Send
+              </Button>
+            </ListGroup.Item>
           </ListGroup>
           <div className="d-flex justify-content-evenly mt-2">
             <Button variant="danger" onClick={() => deleteContact(c._id)}>
@@ -45,6 +52,10 @@ const ContactsList = ({ contacts, getContacts, userId }) => {
     contactsService.deleteContactById(id).then(() => {
       getContacts();
     });
+  };
+
+  const sendAlert = () => {
+    alert("Message succesfully send!!");
   };
 
   const wipeContacts = () => {

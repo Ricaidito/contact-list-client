@@ -58,7 +58,7 @@ const Login = () => {
     <Agenda userId={user.userId} logOut={logOut} />
   ) : (
     <div className="m-2">
-      <h1>No sé qué poner ahí</h1>
+      <h1 className="text-center">The Ultimate Contact Agenda</h1>
       <hr />
       <Form>
         <Form.Group className="mb-3">

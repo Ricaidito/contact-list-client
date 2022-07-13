@@ -1,4 +1,5 @@
 import { useEffect, useState, useCallback } from "react";
+import { Button } from "react-bootstrap";
 import ContactsList from "../components/ContactsList";
 import AddContact from "../components/AddContact";
 import contactsService from "../services/contacts-service";
@@ -20,7 +21,9 @@ const Agenda = ({ userId, logOut }) => {
   return (
     <div className="m-2">
       <h1 className="text-center">Contact Agenda</h1>
-      <button onClick={() => logOut()}>logout</button>
+      <Button variant="danger" onClick={() => logOut()}>
+        Logout
+      </Button>
       <hr />
       <div className="row">
         <AddContact userId={userId} getContacts={getContacts} />
