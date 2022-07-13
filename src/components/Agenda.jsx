@@ -8,15 +8,15 @@ import UpdateContact from "./UpdateContact";
 const Agenda = ({ userId, logOut }) => {
   const [contacts, setContacts] = useState([]);
 
-  const getContacts = useCallback(() => {
-    contactsService
-      .getContactsForUser(userId)
-      .then(contacts => setContacts(contacts.data));
-  }, [userId]);
+  const getContacts = useCallback(
+    () =>
+      contactsService
+        .getContactsForUser(userId)
+        .then(contacts => setContacts(contacts.data)),
+    [userId]
+  );
 
-  useEffect(() => {
-    getContacts();
-  }, [getContacts]);
+  useEffect(() => getContacts(), [getContacts]);
 
   return (
     <div className="m-2">

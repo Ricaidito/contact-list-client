@@ -12,6 +12,16 @@ const UpdateContact = ({ userId, getContacts }) => {
     phoneNumber: "",
   });
 
+  const clearFields = () =>
+    setContact({
+      ...contactToModify,
+      _id: "",
+      firstName: "",
+      lastName: "",
+      email: "",
+      phoneNumber: "",
+    });
+
   const modifyContact = e => {
     e.preventDefault();
     clearFields();
@@ -22,16 +32,6 @@ const UpdateContact = ({ userId, getContacts }) => {
       });
   };
 
-  const clearFields = () => {
-    setContact({
-      ...contactToModify,
-      _id: "",
-      firstName: "",
-      lastName: "",
-      email: "",
-      phoneNumber: "",
-    });
-  };
   return (
     <div className="m-2 col" style={{ width: "25%" }}>
       <h2>Update contact</h2>

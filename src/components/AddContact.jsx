@@ -45,7 +45,6 @@ const AddContact = ({ userId, getContacts }) => {
             value={newContact.firstName}
           />
         </Form.Group>
-
         <Form.Group className="mb-3">
           <Form.Label>Last name:</Form.Label>
           <Form.Control
@@ -58,7 +57,6 @@ const AddContact = ({ userId, getContacts }) => {
             value={newContact.lastName}
           />
         </Form.Group>
-
         <Form.Group className="mb-3">
           <Form.Label>Email address:</Form.Label>
           <Form.Control
@@ -71,7 +69,6 @@ const AddContact = ({ userId, getContacts }) => {
             value={newContact.email}
           />
         </Form.Group>
-
         <Form.Group className="mb-3">
           <Form.Label>Phone number:</Form.Label>
           <Form.Control

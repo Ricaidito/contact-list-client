@@ -6,12 +6,15 @@ import usersService from "../services/users-service";
 const Login = () => {
   const [show, setShow] = useState(false);
   const [logged, setLogged] = useState(false);
+  const [userToCreate, setUserToCreate] = useState({
+    email: "",
+    password: "",
+  });
   const [user, setUser] = useState({
     userId: "",
     email: "",
     password: "",
   });
-  const [userToCreate, setUserToCreate] = useState({ email: "", password: "" });
 
   const logIn = () => {
     const userToLog = { email: user.email, password: user.password };
@@ -24,9 +27,7 @@ const Login = () => {
       .catch(() => alert("ERROR: Invalid credentials"));
   };
 
-  const logOut = () => {
-    setLogged(false);
-  };
+  const logOut = () => setLogged(false);
 
   const createAccount = () => {
     usersService.createAccount(userToCreate).then(res => {
@@ -40,32 +41,27 @@ const Login = () => {
     });
   };
 
-  const clearModalFields = () => {
+  const clearModalFields = () =>
     setUserToCreate({
       email: "",
       password: "",
     });
-  };
 
-  const handleClose = () => {
-    setShow(false);
-  };
-  const handleShow = () => {
-    setShow(true);
-  };
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
 
   return logged ? (
     <Agenda userId={user.userId} logOut={logOut} />
   ) : (
     <div className="m-2">
-      <h1 className="text-center">The Ultimate Contact Agenda</h1>
+      <h1 className="text-center">Contact Agenda</h1>
       <hr />
       <Form>
         <Form.Group className="mb-3">
           <Form.Label>Email address:</Form.Label>
           <Form.Control
             type="email"
-            placeholder="Enter email"
+            placeholder="Email..."
             required
             onChange={e => setUser({ ...user, email: e.target.value })}
             value={user.email}
@@ -75,7 +71,7 @@ const Login = () => {
           <Form.Label>Password:</Form.Label>
           <Form.Control
             type="password"
-            placeholder="Password"
+            placeholder="Password..."
             required
             onChange={e => setUser({ ...user, password: e.target.value })}
             value={user.password}
@@ -98,7 +94,7 @@ const Login = () => {
               <Form.Label>Email address:</Form.Label>
               <Form.Control
                 type="email"
-                placeholder="Enter email"
+                placeholder="Email..."
                 onChange={e =>
                   setUserToCreate({ ...userToCreate, email: e.target.value })
                 }
@@ -109,7 +105,7 @@ const Login = () => {
               <Form.Label>Password:</Form.Label>
               <Form.Control
                 type="password"
-                placeholder="Password"
+                placeholder="Password..."
                 onChange={e =>
                   setUserToCreate({ ...userToCreate, password: e.target.value })
                 }
