@@ -1,4 +1,4 @@
-# Contact list client
+# Contact List SPA
 
 ## Sobre el SPA
 
