@@ -16,7 +16,9 @@ const Agenda = ({ userId, logOut }) => {
     [userId]
   );
 
-  useEffect(() => getContacts(), [getContacts]);
+  useEffect(() => {
+    getContacts();
+  }, [getContacts]);
 
   return (
     <div className="m-2">
